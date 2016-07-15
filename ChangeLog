@@ -1,0 +1,525 @@
+2016-04-20  Jay Belanger <belanger@sxemacs.org>
+
+	* calc-math.el (calcFunc-cosh, calcFunc-sinh)
+	(calcFunc-tanh, calcFunc-arcsinh, calcFunc-arctanh):
+	Use native SXEmacs functions when appropriate.
+
+2016-04-7  Jay Belanger <belanger@sxemacs.org>
+
+        * calc-math.el (math-sqrt): Fix computation
+	for square roots of integers.
+	(math-bigfr-to-calcnum): Fix fractional part.
+
+	* calc.el (calc-format-integer): New function.
+
+2016-03-31  Jay Belanger <belanger@sxemacs.org>
+
+        * calc-ext.el: Autoload `math-use-emacs-fn'.
+
+2016-03-30  Jay Belanger <belanger@sxemacs.org>
+
+	Miscellaneous clean-ups.
+	
+	* calc-bin.el (math-power-of-2-cache): Remove.
+	(math-power-of-2, math-integer-log2, math-real-log2): 
+	Remove `math-power-of-2-cache'.
+
+	* calc-math.el (math-sqrt): Use `integral-sqrt'.
+	(math-nth-root-float): Use `math-use-emacs-fn'.
+	(math-bigfr-to-calcnum): Handle bigfr numbers with exponents.
+
+	* calc.el (calc-empty-stack): New variable.
+
+	* calc-ext (calc-reset) Use `calc-empty-stack'
+	to reset stack.
+
+2016-03-26  Jay Belanger <belanger@sxemacs.org>
+
+	* calc-ext.el (math-pi,math-two-pi, math-pi-over-2)
+	(math-pi-over-4, math-pi-over-180, math-sqrt-pi)
+	(math-sqrt-2, math-sqrt-12, math-sqrt-two-pi)
+	(math-sqrt-e, math-e, math-phi): Use native
+	functions when appropriate.
+
+	* calc-aent.el (calcAlg-blink-matching-check): Remove function.
+	(calc-do-alg-entry): Remove `calcAlg-blink-matching-check'.
+
+	* calcalg2.el (math-trace-buffer):
+	* calc-embed.el (math-embed-the-point)
+	(math-embed-the-display-just, math-embed-the-language):
+	* calc-macs.el (math-save-buf): New variables.
+
+	* calc.el (calc-kill-stack-buffer): 
+	* calcalg2.el (math-poly-laguerre-root):
+	* calcalg3.el (calc-curve-fit):
+	(math-find-minimum, math-general-fit):
+	* calc-alg.el (math-simplify-mod, math-simplify-add-term)
+	(math-build-polynomial-expr)
+	* calc-arith.el (math-setup-declarations)
+	(math-combine-prod)
+	* calc-bin.el (math-format-twos-complement)
+	* calccomp.el (math-compose-expr)
+	* calc-embed.el (calc-do-embedded, calc-embedded-finish-edit)
+	(calc-find-globals)
+	* calc-ext.el (calc-scroll-up)
+	* calc-graph.el (calc-graph-plot, calc-graph-delete-temps)
+	(calc-graph-name, calc-graph-init)
+	* calc-help.el (calc-help-for-help, calc-full-help)
+	* calc-map.el (math-symb-map, calcFunc-reducer)
+	(math-inner-mats)
+	* calc-misc.el (calc-dispatch-help)
+	* calc-nlfit.el (math-nlfit-find-q0, math-nlfit-fit-curve)
+	(calc-fit-hubbert-linear-curve)
+	* calc-poly.el (math-poly-gcd-coefs, math-factor-poly-coefs)
+	* calc-prog.el (calc-edit-macro-combine-digits)
+	* calc-rewr.el (math-rewrite-phase, math-compile-rewrites)
+	* calc-sel.el (calc-prepare-selection, calc-edit-selection)
+	* calc-store.el (calc-declare-variable)
+	* calc-units.el (math-decompose-units)
+	(math-simplify-units-divisor)
+	* calc-vec.el (calc-unpack-item, math-clean-set)
+	* calc-yank.el (calc-do-grab-region):
+	Remove unused variables.
+
+2016-03-24  Jay Belanger <belanger@sxemacs.org>
+
+	* calc-ext.el (math-pi,math-two-pi, math-pi-over-2)
+	(math-pi-over-4, math-pi-over-180, math-sqrt-pi)
+	(math-sqrt-2, math-sqrt-12, math-sqrt-two-pi)
+	(math-sqrt-e, math-e, math-phi): Use native
+	functions when appropriate.
+
+2016-03-22  Jay Belanger <belanger@sxemacs.org>
+
+	* calc-math.el (calc-use-bigfr): New variable.
+	(math-calcnum-to-bigfr, math-bigfr-to-calcnum)
+	(math-use-emacs-fn): New functions.
+	(math-sqrt-raw, math-sin-raw-2, math-cos-raw-2)
+	(math-arctan-raw, math-exp-raw, math-ln-raw):
+	Use `math-use-emacs-fn' when appropriate.
+
+2016-03-05  Jay Belanger <belanger@sxemacs.org>
+
+	* calc-macs.el: (Math-natnump): Check for non-integers.
+
+2016-03-05  Jay Belanger <belanger@sxemacs.org>
+
+	* calc.texinfo (Installation): Remove.
+
+	* calc-macs.el (Math-integer-negp, Math-integer-posp):
+	Reject non-integers.
+
+	* calc-ext.el (calc-init-extensions):
+	* calc-math.el (math-sqrt, math-sqrt-raw):
+	* calc-funcs.el (calcFunc-besJ):  Remove
+	use of `math-isqrt-small'.
+
+	* calc-comb.el (calcFunc-perm): Use bigint
+	calculations for floats.
+
+	* calc.el (math-numdigs): Use `string-length'
+	for length of large integers.
+
+2016-03-03  Jay Belanger <belanger@sxemacs.org>
+
+	* calc-comb.el (math-prime-test): Use `primep'.
+	(calc-report-prime-test): Use the new version of 
+	`calc-prime-test'.
+	(calcFunc-nextprime): Use `next-prime'.
+	(math-next-small-prime): Remove.
+	(calcFunc-lcm): Use `lcm'.
+	(calcFunc-egcd): Use `xgcd'.
+	(calcFunc-fact): Use `factorial'.
+	(math-small-factorial-table): Remove.
+	(calcFunc-choose): Use `binomial-coefficient'.
+	(math-choose-iter): Remove.
+
+	* calc-ext.el (math-gcd): Use gcd.
+
+	* calc.texinfo (Combinatorial Functions): Update
+	the description of `calc-prime-test'.
+
+2016-03-03  Jay Belanger <belanger@sxemacs.org>
+	Remove homebrew bignums.
+
+	* calc.el (math-bignum-digit-length, math-bignum-digit-size)
+	(math-small-integer-size, math-bignum)
+	(math-bignum-big, math-div10-bignum)
+	(math-add-bignum, math-sub-bignum)
+	(math-mul-bignum, math-mul-bignum-digit)
+	(math-div-bignum, math-div-bignum-digit)
+	(math-div-bignum-big, math-div-bignum-part)
+	(math-div-bignum-try, math-format-bignum)
+	(math-format-bignum-decimal, math-read-bignum)
+	(math-read-number-simple, math-read-bignum):
+	* calc-bin.el (math-bignum-logb-digit-size)
+	(math-bignum-digit-power-of-two)
+	(math-big-power-of-2-cache, math-and-bignum)
+	(math-or-bignum, math-xor-bignum)
+	(math-diff-bignum, math-not-bignum)
+	(math-clip-bignum, math-format-bignum-radix)
+	(math-format-bignum-binary, math-format-bignum-octal)
+	(math-format-bignum-hex):
+	* calc-ext.el (math-fixnum-big, math-fixnum, math-norm-bignum)
+	(math-bignum-test, math-compare-bignum, math-format-bignum-fancy):
+	* calc-macs.el (Math-bignum-test):
+	* calc-math.el
+	(math-isqrt-bignum, math-isqrt-bignum-iter)
+	(math-zerop-bignum, math-scale-bignum-digit-size):
+	* calc-misc.el (math-div2-bignum):
+	Remove.
+
+	* calc.el (math-neg, math-scale-left, math-scale-right)
+	(math-numdigs, math-normalize, math-make-float)
+	(math-scale-rounding, math-add, math-sub)
+	(math-mul, math-idivmod, math-quotient)
+	(math-format-number, math-read-number)
+	(math-2-word-size, math-half-2-word-size):
+	* calc-aent.el (calc-do-quick-calc, math-beforep):
+	* calc-bin.el (math-power-of-2, calcFunc-and)
+	(calcFunc-or, calcFunc-xor, calcFunc-diff)
+	(calcFunc-not, math-clip, math-format-twos-complement):
+	* calc-comb.el (math-small-factorial-table):
+	* calc-ext.el (math-approx-pi, math-approx-sqrt-e)
+	(math-approx-gamma-const)
+	(calc-init-extensions, math-oddp, math-integerp)
+	(math-natnump, math-ratp, math-realp, math-anglep)
+	(math-numberp, math-scalarp, math-objvecp, math-primp)
+	(math-num-natnump, math-objectp, math-compare):
+	* calc-macs.el (Math-zerop, Math-integer-posp, Math-integer-negp)
+	(Math-negp, Math-posp, Math-integerp, Math-natnump)
+	(Math-ratp, Math-realp, Math-anglep, Math-numberp)
+	(Math-scalarp, Math-objectp, Math-objvecp, Math-integer-neg)
+	(Math-primp, Math-num-integerp, Math-natnum-lessp):
+	* calc-math.el (math-isqrt, math-sqrt):
+	* calc-misc.el (math-zerop, math-negp, math-posp, math-evenp)
+	(math-div2):
+	* calc-vec.el (calcFunc-vunpack):  Remove use of bigpos and bigneg.
+
+	* calc-bin.el (math-not): New function.
+
+2016-01-15  Jay Belanger <belanger@sxemacs.org>
+
+	* calc.el: Fix keybinding.
+
+	* calc-yank.el (calc-set-register): Remove undefined function.
+	(calc-copy-to-register, calc-insert-register)
+	(calc-append-to-register, calc-prepend-to-register): Remove
+	undefined functions.
+
+2016-01-15  Jay Belanger <belanger@sxemacs.org>
+
+	* Makefile: Change for new files.
+
+2016-01-15  Jay Belanger <belanger@sxemacs.org>
+
+	* Makefile, package-info.in: Copy from XEmacs.
+
+	* auto-autoloads.el, calc-loaddefs.el, _pkg.el: Remove.
+
+2016-01-15  Jay Belanger <belanger@sxemacs.org>
+
+	* calc.texinfo: Update GPL.
+	Miscellaneous changes.
+
+	* gpl.texi: New file (from SXEmacs sources).
+	
+	* calc-aent.el (calc-alg-ent-esc-map): Remove.
+	(math-read-exprs): Don't use `math-read-preprocess-string'.
+
+	* calc.el: Remove cruft.
+	(calc-mode): Remove undefined function.
+
+	* calc-ext.el (calc-z-prefix-help): Don't display 
+	separate message when there are no user defined keys.
+	(calc-init-extensions): Add keybindings for calc-undo.
+	Don't autoload `calc-pass-errors'.
+
+	* calc-help.el (calc-full-help): Remove undefined variable.
+	Use the correct function for the return message.
+	(calc-describe-key): Use the correct function for the
+	return message.
+	(calc-help-for-help): Fix the docstring.
+	Remove unnecessary `select-window'.
+	(calc-describe-no-warranty): Fix the search string.
+	(calc-describe-key): Remove an unnecessary rewrite.
+
+	* calc-prog.el (calc-pass-errors): Remove.
+
+	* auto-autoloads.el: Remove unnecessary autoloads.
+	
+2016-01-15  Jay Belanger <belanger@sxemacs.org>
+
+	 * calc-aent.el (calc-alg-ent-esc-map): Remove.
+	 (math-read-exprs): Don't use `math-read-preprocess-string'.
+
+	 * calc.el: Remove cruft.
+
+2016-01-15  Jay Belanger <belanger@sxemacs.org>
+
+	* calc.texinfo: Miscellaneous changes.
+
+	* calc-aent (calc-do-alg-entry): Remove illegal keybinding.
+
+	* calc-ext.el (math-read-string): Return a vector of integers.
+
+	* calc-units.el (math-standard-units, math-unit-prefixes):
+	Remove units and prefixes with undefined symbols.
+
+	* calc-store.el (calc-edit-variable): Fix the header.
+
+	* calc-prog.el (math-read-char): New function.
+	(calc-kbd-skip-to-else-if): Use `math-read-char' to
+	read the next character.
+
+2016-01-08  Jay Belanger <belanger@sxemacs.org>
+
+	* calc-ext.el (calc-alg-esc-map): Remove.
+	(calc-init-extensions): Fix calc-alg-map.
+
+	* calc.texinfo: Miscellaneous changes.
+
+2016-01-08  Jay Belanger <jay.p.belanger@gmail.com>
+
+	* calc-yank.el (calc-copy-to-buffer): Indicate
+	when the Calc stack is empty.
+
+2016-01-03  Jay Belanger <jay.p.belanger@gmail.com>
+
+	* calc-keypd.el (calc-keypd-mode-map): Add bindings
+	for mouse clicks.
+	(calc-keypad-left-click): Use `event-point' to
+	determine point to use.
+
+	* calc.el (calc-get-window): New function.
+	(calc-align-stack-window): Move to proper
+	window to realign.
+
+2016-01-03  Jay Belanger <jay.p.belanger@gmail.com>
+
+	* calc.el (calc-nonselected-face): Give some properties.
+
+2016-01-03  Jay Belanger <jay.p.belanger@gmail.com>
+
+	* calc.texi (Logarithmic Units, Musical Notes): 
+	New sections.
+	(Rewrites Tutorial): Use examples created for Emacs.
+	(Storing variables): Mention how to copy special constants.
+
+2016-01-02  Jay Belanger <jay.p.belanger@gmail.com>
+
+        * doc/misc/calc.texi (Date Forms):
+	Mention default Gregorian calendar.
+	Fix description of Unix time.
+	(Quick Calculator): Mention prefix argument of
+	`quick-calc'.
+	(Single-Variable Statistics): Mention correct
+	keybinding for root-mean-square.
+	(Radix modes):  Mention twos-complement notation.
+        (Simplifying Formulas): Mention that algebraic
+	simplification is now the default.
+	(Manipulating Vectors): Mention that vectors can be used to
+	determine bins for `calc-histogram'.
+        (Simplifying Formulas): Explain use of the I and H flags
+	for simplification.
+
+2016-01-02  Jay Belanger <jay.p.belanger@gmail.com>
+
+	* calc.texinfo (Help Commands): Add index entries
+	for "prefix ?" keybindings.
+	(Stack Manipulation Commands): Add documentation for
+	`calc-transpose-lines'
+	(Undoing Mistakes): Mention that the undo list will be
+	truncated when Calc is quit.
+	(About This Manual): Comment out a mention of marginal notes.
+	Remove mention of chapter numbers in text.
+	(Rearranging Formulas using Selections): Discuss new options for `j *'.
+	Clarify use of prefix.
+	(User Defined Units): Mention how to enter optional display string.
+	(Vector and Matrix Arithmetic): Add mention of `kron'.
+	(Saving Into Registers, Inserting From Registers): New sections.
+	(Killing from the stack): Mention more copying options.
+	(Calc Summary): Mention register commands, `kron'.
+
+2016-01-01  Jay Belanger <jay.p.belanger@gmail.com>
+
+	* calc.texinfo (Demonstration of Calc, Language Modes)
+	(Basic Algebra Tutorial, Language Modes)
+	(TeX and LaTeX Language Mode, Calc Mode Line):
+	Mention LaTeX.
+	(Maxima Mode, Giac Mode, Yacas Mode): New sections.
+
+2016-01-01  Jay Belanger <jay.p.belanger@gmail.com>
+
+	* calc-help.el (calc-describe-distribution):  Remove.
+
+	* calc-ext.el (calc-help-map): Remove binding for
+	`calc-describe-distribution.
+
+	* calc.texinfo (Predefined Units): Add some history.
+	(History and Acknowledgements): Mention modern
+	numerical abilities.
+	(Help Commands, Time Zone, Reporting Bugs):
+	Remove Reporting Bugs section and references.
+	(Trigonometric and Hyperbolic Functions): Mention
+	additional functions.
+	(Formulas, Composition Basics): Mention the
+	lower the precedence of negation.
+
+2016-01-01  Jay Belanger <jay.p.belanger@gmail.com>
+
+	* calc.el (calcDigit-start): Require calc-ext.
+
+	* auto-autoloads.el: Remove calc-extensions.
+
+	* calc-prog.el (calc-kbd-loop):  Use strings instead of vectors.
+
+2016-01-01  Jay Belanger <jay.p.belanger@gmail.com>
+
+	* calc-prog.el (calc-user-define-permanent):
+	Format macros suitable for saving.
+
+2015-12-31  Jay Belanger <jay.p.belanger@gmail.com>
+
+        * calc-prog.el (calc-user-define-edit):  Fix incorrect
+	variable.
+
+2015-12-31  Jay Belanger <jay.p.belanger@gmail.com>
+
+	* calc-ext.el (calc-z-prefix-help): Fix ordering
+	of keys.
+
+
+2015-12-31  Jay Belanger <jay.p.belanger@gmail.com>
+
+	* calc-ext.el (calc-z-map):  New variable.
+	(calc-mode-map): Bind "z" to `calc-z-map'.
+	(calc-z-prefix-func): New function.
+	(calc-z-prefix-help): Redefine using
+	`calc-z-prefix-func'.
+	(calc-user-function-classify): Use `calc-z-map'.
+
+	* calc-prog.el (calc-user-define)
+	(calc-user-define-formula, calc-user-define-kbd-macro)
+	(calc-get-user-defn, calc-user-define-permanent):
+	Use `calc-z-map' instead of `calc-user-key-map'.
+	(calc-edit-macro-finish-edit): Remove unnecessary
+	arg from `edmacro-parse-keys'.
+
+2015-12-31  Jay Belanger <jay.p.belanger@gmail.com>
+
+	* calc-misc.el (calc-info-goto-node): Go to the Calc info file
+	before going to the node.
+
+	* calc-help.el (calc-describe-key):  Remove extra arg
+	to `require'.  Use `key-description' when a string is
+	expected.
+	(calc-help-index-entries): Remove extra arg to `require'.
+	Make each entry a list.
+
+2015-12-30  Jay Belanger <jay.p.belanger@gmail.com>
+
+	* calc.el (calc-mode): Add calc-menu.
+
+	* calc-menu.el: Remove `:help' and `:visible' keywords.
+
+2015-12-30  Jay Belanger <jay.p.belanger@gmail.com>
+
+	* calc-ext.el (calc-record-messages, calc-user-function-list):
+	* calc-help.el (calc-describe-key, calc-full-help):
+	* calc-lang.el (math-read-big-balance):
+	* calc-store.el (calc-edit-variable):
+	* calc-units.el (math-build-units-table-buffer):
+	* calc-yank.el (calc-edit-mode):
+	Replace undefined function `format-message' by `format'.
+
+2015-12-28  Jay Belanger <jay.p.belanger@gmail.com>
+
+	* calc.el (calc-align-stack-window): Adjust vertical motion.
+	(calc-record): Adjust trail buffer.
+
+	* calc-embed.el (calc-do-embedded): Remove undefined
+	function `format-mode-line'.
+
+2015-12-28  Jay Belanger <jay.p.belanger@gmail.com>
+
+	* calc.el (math-format-stack-value): Use spaces
+	for offset.
+
+2015-12-28  Jay Belanger <jay.p.belanger@gmail.com>
+
+	* calc-ext.el: Autoload `calc-undo'.
+	(calc-fancy-prefix):  Remove unnecessary code.
+
+	* calc.el (calc-mode): Remove references to 
+	`calc-kill-stack-buffer' and
+	`minor-mode-overriding-map-alist'.
+
+	* calc-embed.el (calc-do-embedded):
+	Remove reference to `minor-mode-overriding-map-alist'.
+
+	* calc-lang.el (math-lang-read-symbol):
+	* calccomp.el (math-compose-expr):
+	* calc-ext.el (math-format-flat-expr-fancy):
+	* calc-lang (math-read-big-rec):
+	* calc-store (calc-read-var-name):
+	* calc-units (math-standard-units):
+	Remove references to undisplayable symbols.
+
+2015-12-28  Jay Belanger <jay.p.belanger@gmail.com>
+
+	* calc-aent.el (calc-do-quick-calc, calc-algebraic-entry)
+	(calc-alg-entry):
+	* calc.el (calc-digit-start-entry, calcDigit-start)
+	(calcDigit-nondigit, calcDigit-key, calcDigit-backspace)
+	(calc-unread-command):
+	* calc-ext.el (calc-fancy-prefix, calc-fancy-prefix-other-key):
+	* calc-incom.el (calc-digit-dots):
+	* calc-keypd.el (calc-keypad-execute):
+	* calc-misc.el (calc-missing-key, calcDigit-letter):
+	* calc-prog.el (calc-kbd-loop):
+	* calc-sel.el (calc-select-part):
+	* calc-store.el (calc-store-quick, calc-store-into-quick)
+	(calc-recall-quick):
+	* calc-stuff.el (calc-clean-num):
+	* calc-units.el (calc-quick-units):
+	* calc-yank.el (calc-finish-stack-edit, calc-overwrite-string):
+	Replace `last-command-event' by `last-command-char'.
+
+2015-12-28  Jay Belanger <jay.p.belanger@gmail.com>
+	Get calc.texinfo to compile.
+
+	calc.texinfo: Reverse nesting of example and
+	group environments.
+	Comment out some TeX specific commands.
+
+2015-12-28  Jay Belanger <jay.p.belanger@gmail.com>
+
+	* calc.texinfo: New file (from XEmacs).
+
+	* calc.el (calc-quit): 
+	* calc-ext.el (calc-reset): 
+	* calc-misc.el (calc-big-or-small):
+	Replace calc-full-height-p and calc-full-width-p.
+
+	* calc-aent.el (calc-do-alg-entry): Remove problematic keybinding.
+
+	* calc-graph.el (calc-graph-init): Replace undefined function.
+	(calc-temp-file-name): Replace undefined function.
+
+2015-12-27  Jay Belanger <jay.p.belanger@gmail.com>
+	Get working with SXEmacs.
+
+	Comment out (throughout) parts that don't work in SXEmacs.
+	Remove the declare-function lines.
+
+	* calc.el (calcDigit-digit, calcDigit-nondigit): Replace
+	by the XEmacs Calc versions.
+	* (minibuffer-prompt-end, minibuffer-contents): New functions.
+
+2015-12-27  Jay Belanger <jay.p.belanger@gmail.com>
+        Initial checkin.
+
+	Calc is from Emacs git, 2015-12-27.
+	auto-autoloads.el is from XEmacs Calc.
+	
